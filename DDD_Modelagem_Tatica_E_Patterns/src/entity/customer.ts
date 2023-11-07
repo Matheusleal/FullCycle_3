@@ -1,4 +1,7 @@
-class Customer {
+  // uma ação para representar uma regra de negócio, get/set só altera o valor, porém não espressa negócio.
+  // as propriedades do objeto devem ser consistentes, um customr nunca pode ser sem nome.
+
+  class Customer {
   private _id: string;
   private _name: string;
   private _address: string;
@@ -10,7 +13,6 @@ class Customer {
     this._address = address;
   }
 
-  // uma ação para representar uma regra de negócio, get/set só altera o valor, porém não espressa negócio.
   activate() {
     this._active = true;
   }
