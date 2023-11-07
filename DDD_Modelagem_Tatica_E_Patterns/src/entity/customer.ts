@@ -2,6 +2,7 @@ class Customer {
   private _id: string;
   private _name: string;
   private _address: string;
+  private _active: boolean = true;
 
   constructor(id: string, name: string, address: string) {
     this._id = id;
@@ -9,26 +10,14 @@ class Customer {
     this._address = address;
   }
 
-  get id() {
-    return this._id;
+  // uma ação para representar uma regra de negócio, get/set só altera o valor, porém não espressa negócio.
+  activate() {
+    this._active = true;
   }
-  set id(id: string) {
-    this._id = id;
-  }
-
-  get name() {
-    return this._name;
-  }
-  set name(name: string) {
-    this._name = name;
+  deactivate() {
+    this._active = false;
   }
 
-  get address() {
-    return this._address;
-  }
-  set address(address: string) {
-    this._address = address;
-  }
 }
 
 var x = new Customer("1", "John", "New York");
