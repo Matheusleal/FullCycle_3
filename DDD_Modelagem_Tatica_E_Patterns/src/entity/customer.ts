@@ -2,8 +2,10 @@
 // as propriedades do objeto devem ser consistentes, um customr nunca pode ser sem nome.
 // uma entidade por padrão sempre precisa se autovalidar
 
+import Address from "./address";
+
 /*
-  Complexidade de negócio:
+    Complexidade de negócio:
   - Domain
   - - Entity
   - - - Customer.ts (regra de negócio)
@@ -17,13 +19,12 @@
 class Customer {
   private _id: string;
   private _name: string;
-  private _address: string;
+  private _address!: Address;
   private _active: boolean = false;
 
-  constructor(id: string, name: string, address: string) {
+  constructor(id: string, name: string) {
     this._id = id;
     this._name = name;
-    this._address = address;
 
     this.validateEntity();
   }
@@ -33,12 +34,12 @@ class Customer {
     if (this._name.length === 0) throw new Error("Name is required");
   }
 
-  validateAddress() {
-    if (this._address.length === 0) throw new Error("Address is required to activate customer");
+  setAddress(address: Address) {
+    this._address = address;
   }
 
   activate() {
-    this.validateAddress();
+    this._address?.validate();
     this._active = true;
   }
   deactivate() {
@@ -51,6 +52,4 @@ class Customer {
   }
 
 }
-
-var x = new Customer("1", "John", "New York");
 
