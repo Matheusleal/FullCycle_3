@@ -8,4 +8,14 @@ export default class OrderItem {
     this._name = name;
     this._price = price;
   }
+
+  get id() {
+    return this._id;
+  }
+  get name() {
+    return this._name;
+  }
+  get price() {
+    return this._price;
+  }
 }
