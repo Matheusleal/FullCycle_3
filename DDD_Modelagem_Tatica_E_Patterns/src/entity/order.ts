@@ -1,4 +1,4 @@
-import OrderItem from "./orderItem";
+import OrderItem from "./order_item";
 
 export default class Order {
   private _id: string;
@@ -26,6 +26,6 @@ get total() {
  }
 
   private totalCalculate() {
-    return this._items.reduce((total, item) => total + item.price, 0)
+    return this._items.reduce((total, item) => total + item.total, 0)
   }
 }

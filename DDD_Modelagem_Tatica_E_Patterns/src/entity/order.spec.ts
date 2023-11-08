@@ -1,5 +1,5 @@
 import Order from "./order";
-import OrderItem from "./orderItem";
+import OrderItem from "./order_item";
 
 describe("Order unit tests", () => {
 
@@ -22,13 +22,20 @@ describe("Order unit tests", () => {
   })
 
   it("should calculate total", () => {
-    const item1 = new OrderItem("1", "Item 1", 10);
-    const item2 = new OrderItem("2", "Item 2", 14);
-    const item3 = new OrderItem("3", "Item 3", 3.18);
+    const item1 = new OrderItem("1", "Item 1", "10", 1, 10);
+    const item2 = new OrderItem("2", "Item 2", "14", 4, 5);
+    const item3 = new OrderItem("3", "Item 3", "3", 2, 3.15);
 
     const order = new Order("1", "2", [item1, item2, item3]);
 
-    expect(order.total).toBe(27.18);
+    expect(order.total).toBe(36.30);
   })
+
+  it("should throw error if the item quantity is less or equal to zero", () => {
+    expect(() => {
+      const item1 = new OrderItem("1", "Item 1", "10", 0, 10);
+      const order = new Order("1", "2", [item1]);
+    }).toThrow("Quantity must be greater than 0")
+   })
 
 })
