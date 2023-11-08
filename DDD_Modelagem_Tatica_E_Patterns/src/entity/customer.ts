@@ -38,13 +38,13 @@ export default class Customer {
     this._address = address;
   }
 
-  getId() {
+  get id() {
     return this._id;
   }
-  getName() {
+  get name() {
     return this._name;
   }
-  getAddress() {
+  get address() {
     return this._address;
   }
   isActive() {
@@ -52,6 +52,8 @@ export default class Customer {
   }
 
   activate() {
+    if (this._address === undefined) throw new Error("Address is required");
+
     this._address?.validate();
     this._active = true;
   }
