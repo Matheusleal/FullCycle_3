@@ -9,6 +9,7 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "test": "jest"
+    "build": "tsc --noEmit",
+    "test": "npm run build && jest"
   }
 }
