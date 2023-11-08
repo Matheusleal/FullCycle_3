@@ -1,6 +1,19 @@
 // uma ação para representar uma regra de negócio, get/set só altera o valor, porém não espressa negócio.
 // as propriedades do objeto devem ser consistentes, um customr nunca pode ser sem nome.
 // uma entidade por padrão sempre precisa se autovalidar
+
+/*
+  Complexidade de negócio:
+  - Domain
+  - - Entity
+  - - - Customer.ts (regra de negócio)
+
+  Complexidade acidental (infra - mundo externo):
+  - Infra
+  - - Repository
+  - - - Customer.ts (get,set)
+ */
+
 class Customer {
   private _id: string;
   private _name: string;
