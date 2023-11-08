@@ -16,7 +16,7 @@ import Address from "./address";
   - - - Customer.ts (get,set)
  */
 
-class Customer {
+export default class Customer {
   private _id: string;
   private _name: string;
   private _address!: Address;
@@ -36,6 +36,19 @@ class Customer {
 
   setAddress(address: Address) {
     this._address = address;
+  }
+
+  getId() {
+    return this._id;
+  }
+  getName() {
+    return this._name;
+  }
+  getAddress() {
+    return this._address;
+  }
+  isActive() {
+    return this._active;
   }
 
   activate() {
