@@ -63,8 +63,8 @@ describe("Customer unit tests", () => {
 
     expect(customer.rewardPoints).toBe(10);
 
-    customer.addRewardPoints(10.3);
+    customer.addRewardPoints(10.3 );
 
     expect(customer.rewardPoints).toBe(20);
   })
-})
+}) 
