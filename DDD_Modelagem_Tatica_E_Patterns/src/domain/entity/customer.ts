@@ -30,6 +30,12 @@ export default class Customer {
     this.validateEntity();
   }
 
+
+  get id() {return this._id;}
+  get name() {return this._name;}
+  get address() {return this._address;}
+  get rewardPoints() {return this._rewardPoints;}
+
   validateEntity() {
     if (this._id.length === 0) throw new Error("Id is required");
     if (this._name.length === 0) throw new Error("Name is required");
@@ -38,11 +44,6 @@ export default class Customer {
   setAddress(address: Address) {
     this._address = address;
   }
-
-  get id() {return this._id;}
-  get name() {return this._name;}
-  get address() {return this._address;}
-  get rewardPoints() {return this._rewardPoints;}
 
   isActive() {
     return this._active;
