@@ -15,15 +15,16 @@ export default class Order {
     this.validate();
   }
 
-get total() {
-  return this._total
-}
+  get id() { return this._id }
+  get items() { return this._items }
+  get total() { return this._total }
+  get customerId() { return this._customerId }
 
- validate() {
-   if(this._id.length === 0) throw new Error("Id is required");
-   if(this._customerId.length === 0) throw new Error("CustomerId is required");
-   if(this._items.length === 0) throw new Error("Items are required");
- }
+  validate() {
+    if (this._id.length === 0) throw new Error("Id is required");
+    if (this._customerId.length === 0) throw new Error("CustomerId is required");
+    if (this._items.length === 0) throw new Error("Items are required");
+  }
 
   private totalCalculate() {
     return this._items.reduce((total, item) => total + item.total, 0)

@@ -20,15 +20,16 @@ export default class OrderItem {
   get id() { return this._id; }
   get name() { return this._name; }
   get total() { return this._total; }
+  get price() { return this._price; }
   get productId() { return this._productId; }
   get quantity() { return this._quantity; }
 
   validate() {
-    if(this._id.length === 0) throw new Error("Id is required");
-    if(this._name.length === 0) throw new Error("Name is required");
-    if(this._productId.length === 0) throw new Error("ProductId is required");
-    if(this._quantity <= 0) throw new Error("Quantity must be greater than 0");
-    if(this._price <= 0) throw new Error("Price must be greater than 0");
+    if (this._id.length === 0) throw new Error("Id is required");
+    if (this._name.length === 0) throw new Error("Name is required");
+    if (this._productId.length === 0) throw new Error("ProductId is required");
+    if (this._quantity <= 0) throw new Error("Quantity must be greater than 0");
+    if (this._price <= 0) throw new Error("Price must be greater than 0");
   }
 
   private orderItemTotal() {
