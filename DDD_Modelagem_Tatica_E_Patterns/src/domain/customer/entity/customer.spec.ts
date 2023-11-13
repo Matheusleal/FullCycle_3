@@ -1,4 +1,4 @@
-import Address from "./address";
+import Address from "./value-object/address";
 import Customer from "./customer";
 
 describe("Customer unit tests", () => {
@@ -67,4 +67,4 @@ describe("Customer unit tests", () => {
 
     expect(customer.rewardPoints).toBe(20);
   })
-}) 
+})

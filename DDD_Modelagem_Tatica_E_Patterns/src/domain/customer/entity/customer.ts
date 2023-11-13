@@ -2,7 +2,7 @@
 // as propriedades do objeto devem ser consistentes, um customr nunca pode ser sem nome.
 // uma entidade por padrão sempre precisa se autovalidar
 
-import Address from "./address";
+import Address from "./value-object/address";
 
 /*
     Complexidade de negócio:

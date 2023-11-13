@@ -4,12 +4,12 @@ import OrderModel from "../db/sequelize/model/order.model";
 import OrderItemModel from "../db/sequelize/model/order_Item.model";
 import ProductModel from "../db/sequelize/model/product.model";
 import CustomerRepository from "./customer.repository";
-import Customer from "../../domain/entity/customer";
-import Address from "../../domain/entity/address";
-import Order from "../../domain/entity/order";
+import Customer from "../../domain/customer/entity/customer";
+import Address from "../../domain/customer/entity/value-object/address";
+import Order from "../../domain/order/entity/order";
 import ProductRepository from "./product.repository";
-import Product from "../../domain/entity/product";
-import OrderItem from "../../domain/entity/order_item";
+import Product from "../../domain/product/entity/product";
+import OrderItem from "../../domain/order/entity/order_item";
 import OrderRepository from "./order.repository";
 
 
