@@ -4,6 +4,9 @@
 
 import Address from "./value-object/address";
 
+import AgregateRoot from "../../@shared/domain/aggregate_root.interface"
+import CustomerAddressChangedEvent from "../event/customer_address_changed.event";
+
 /*
     Complexidade de negócio:
   - Domain
@@ -16,7 +19,7 @@ import Address from "./value-object/address";
   - - - Customer.ts (get,set)
  */
 
-export default class Customer {
+export default class Customer extends AgregateRoot {
   private _id: string;
   private _name: string;
   private _address!: Address;
@@ -24,6 +27,8 @@ export default class Customer {
   private _rewardPoints: number = 0;
 
   constructor(id: string, name: string) {
+    super();
+
     this._id = id;
     this._name = name;
 
@@ -43,6 +48,7 @@ export default class Customer {
 
   setAddress(address: Address) {
     this._address = address;
+    this.addEvent(new CustomerAddressChangedEvent(this.id, this));
   }
 
   isActive() {

@@ -1,5 +1,6 @@
-export default interface DomainEventInterface {
-  aggregateId: string
-  occurredOn: Date
-  eventVersion: number
+import EventInterface from "../event/event.interface"
+
+export default interface DomainEventInterface extends EventInterface {
+
+  aggregateId: string;
 }

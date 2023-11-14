@@ -2,13 +2,17 @@ import DomainEventInterface from "./domain_event.interface";
 
 export default abstract class AggregateRootInterface {
 
-  events: Set<DomainEventInterface> = new Set();
+  private _events: Set<DomainEventInterface> = new Set();
 
-  addEvent(event: DomainEventInterface) {
-    this.events.add(event);
+  getEvents(): DomainEventInterface[] {
+    return Array.from(this._events);
+  }
+
+  protected addEvent(event: DomainEventInterface) {
+    this._events.add(event);
   }
 
   clearEvents() {
-    this.events.clear();
+    this._events.clear();
   }
 }

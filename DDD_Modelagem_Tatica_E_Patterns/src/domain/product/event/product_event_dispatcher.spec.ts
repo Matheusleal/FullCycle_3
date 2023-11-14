@@ -2,7 +2,7 @@ import EventDispatcher from "../../@shared/event/event_dispatcher"
 import SendEmailWhenProductIsCreatedHandler from "./handler/send_email_when_product_is_created.handler"
 import ProductCreatedEvent from "./product_created.event"
 
-describe("Domain events tests", () => {
+describe("Product domain   events tests", () => {
 
   it("should register an event handler", () => {
     const eventDispatcher = new EventDispatcher()
