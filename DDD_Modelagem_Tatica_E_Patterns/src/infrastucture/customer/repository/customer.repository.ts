@@ -1,7 +1,7 @@
-import Address from "../../domain/customer/entity/value-object/address";
-import Customer from "../../domain/customer/entity/customer";
-import CustomerRepositoryInterface from "../../domain/customer/repository/customer.repository.interface";
-import CustomerModel from "../db/sequelize/model/customer.model";
+import Address from "../../../domain/customer/entity/value-object/address";
+import Customer from "../../../domain/customer/entity/customer";
+import CustomerRepositoryInterface from "../../../domain/customer/repository/customer.repository.interface";
+import CustomerModel from "./customer.model";
 
 export default class CustomerRepository implements CustomerRepositoryInterface {
   async create(entity: Customer): Promise<void> {
@@ -56,7 +56,10 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
       customerModel.zipCode,
       customerModel.city
     );
+
     customer.setAddress(address);
+    customer.clearEvents();
+
     return customer;
   }
 
@@ -73,7 +76,9 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
         customerModels.zipCode,
         customerModels.city
       );
+
       customer.setAddress(address);
+      customer.clearEvents();
 
       if (customerModels.active) {
         customer.activate();

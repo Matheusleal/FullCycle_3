@@ -35,7 +35,6 @@ export default class Customer extends AgregateRoot {
     this.validateEntity();
   }
 
-
   get id() {return this._id;}
   get name() {return this._name;}
   get address() {return this._address;}

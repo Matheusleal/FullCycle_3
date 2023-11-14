@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
-import CustomerModel from "../db/sequelize/model/customer.model";
-import Customer from "../../domain/customer/entity/customer";
-import Address from "../../domain/customer/entity/value-object/address";
+import CustomerModel from "./customer.model";
+import Customer from "../../../domain/customer/entity/customer";
+import Address from "../../../domain/customer/entity/value-object/address";
 import CustomerRepository from "./customer.repository";
 
 
@@ -16,7 +16,7 @@ describe("Customer repository test", () => {
       sync: { force: true },
     });
 
-    await sequelize.addModels([CustomerModel]);
+    sequelize.addModels([CustomerModel]);
     await sequelize.sync();
   });
 
@@ -73,9 +73,15 @@ describe("Customer repository test", () => {
 
   it("should find a customer", async () => {
     const customerRepository = new CustomerRepository();
+
+
     const customer = new Customer("123", "Customer 1");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
+
     customer.setAddress(address);
+
+    customer.clearEvents();
+
     await customerRepository.create(customer);
 
     const customerResult = await customerRepository.find(customer.id);
@@ -93,15 +99,18 @@ describe("Customer repository test", () => {
 
   it("should find all customers", async () => {
     const customerRepository = new CustomerRepository();
+
     const customer1 = new Customer("123", "Customer 1");
     const address1 = new Address("Street 1", 1, "Zipcode 1", "City 1");
     customer1.setAddress(address1);
     customer1.addRewardPoints(10);
+    customer1.clearEvents();
     customer1.activate();
 
     const customer2 = new Customer("456", "Customer 2");
     const address2 = new Address("Street 2", 2, "Zipcode 2", "City 2");
     customer2.setAddress(address2);
+    customer2.clearEvents();
     customer2.addRewardPoints(20);
 
     await customerRepository.create(customer1);
