@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{1F6813C4-9867-4386-A617-2CD652DC74EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{1F6813C4-9867-4386-A617-2CD652DC74EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeExtensions", "TypeHelpers\TypeExtensions.csproj", "{A5B0BC25-902F-43CB-8CD9-1CEFD609437D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypeExtensions", "TypeHelpers\TypeExtensions.csproj", "{A5B0BC25-902F-43CB-8CD9-1CEFD609437D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Domain", "00 - Domain", "{E0B14223-5E0D-4BE1-89D1-38317B9E877C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.UnityTest", "Domain.UnityTest\Domain.UnityTest.csproj", "{3081D8DA-D365-4DF5-A760-8402DB5DA035}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.UnityTest", "Domain.UnityTest\Domain.UnityTest.csproj", "{3081D8DA-D365-4DF5-A760-8402DB5DA035}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Utilities", "01 - Utilities", "{161AA35E-6C75-4435-ACE0-E6D579C68BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1F6813C4-9867-4386-A617-2CD652DC74EF} = {E0B14223-5E0D-4BE1-89D1-38317B9E877C}
+		{A5B0BC25-902F-43CB-8CD9-1CEFD609437D} = {161AA35E-6C75-4435-ACE0-E6D579C68BA1}
 		{3081D8DA-D365-4DF5-A760-8402DB5DA035} = {E0B14223-5E0D-4BE1-89D1-38317B9E877C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
