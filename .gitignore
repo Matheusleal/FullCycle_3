@@ -3,4 +3,4 @@ node_modules/
 dist/
 bin/
 obj/
-/DDD_Modelagem_Tatica_E_Patterns_DOTNET/.vs/DDD_Modelagem_Tatica_E_Patterns_DOTNET
+.vs/
