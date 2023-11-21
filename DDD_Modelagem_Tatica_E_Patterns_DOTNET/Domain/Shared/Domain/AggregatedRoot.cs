@@ -8,7 +8,7 @@ public abstract class AggregatedRoot
     {
         Events.Add(dataEvent);
     }
-    protected void ClearEvents()
+    public void ClearEvents()
     {
         Events.Clear();
     }
