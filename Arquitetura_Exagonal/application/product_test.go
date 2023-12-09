@@ -3,7 +3,7 @@ package application_test
 import (
 	"testing"
 
-	"github.com/MatheusLeal/go-exagonal/application"
+	"github.com/MatheusLeal/go-hexagonal/application"
 	uuid "github.com/satori/go.uuid"
 	"github.com/stretchr/testify/require"
 )
