@@ -4,6 +4,7 @@ import CustomerModel from "../../../infrastucture/customer/repository/customer.m
 import CustomerRepository from "../../../infrastucture/customer/repository/customer.repository";
 import Customer from "../../../domain/customer/entity/customer";
 import Address from "../../../domain/customer/entity/value-object/address";
+import FindCustomerUseCase from "./find.customer.usecase";
 
 describe('Find Customer Use Case', () => {
   let sequelize: Sequelize;
@@ -33,7 +34,7 @@ describe('Find Customer Use Case', () => {
     customer.setAddress(address);
 
     await customerRepository.create(customer)
-
+    
     const input = {
       id: "123",
     }
