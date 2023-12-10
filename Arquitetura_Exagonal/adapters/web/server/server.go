@@ -6,6 +6,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/MatheusLeal/go-hexagonal/adapters/web/handler"
 	"github.com/MatheusLeal/go-hexagonal/application"
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
@@ -25,6 +26,9 @@ func (w WebServer) Serve() {
 	n := negroni.New(
 		negroni.NewLogger(),
 	)
+
+	handler.MakeProductHandlers(r, n, w.Service)
+	http.Handle("/", r)
 
 	server := &http.Server{
 		Addr:              ":8080",
