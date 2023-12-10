@@ -31,7 +31,7 @@ func (w WebServer) Serve() {
 	http.Handle("/", r)
 
 	server := &http.Server{
-		Addr:              ":8080",
+		Addr:              ":9000",
 		WriteTimeout:      10 * time.Second,
 		ReadHeaderTimeout: 10 * time.Second,
 		Handler:           http.DefaultServeMux,
