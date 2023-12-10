@@ -34,7 +34,7 @@ describe('Find Customer Use Case', () => {
     customer.setAddress(address);
 
     await customerRepository.create(customer)
-    
+
     const input = {
       id: "123",
     }
@@ -50,7 +50,7 @@ describe('Find Customer Use Case', () => {
       }
     }
 
-    const result = useCase.execute(input);
+    const result = await useCase.execute(input);
 
     expect(result).toEqual(output)
   })
