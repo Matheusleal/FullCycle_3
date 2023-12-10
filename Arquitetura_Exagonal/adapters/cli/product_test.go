@@ -41,7 +41,7 @@ func TestRun(t *testing.T) {
 	require.Equal(t, expectedResult, result)
 
 	expectedResult = fmt.Sprintf("Product %s has been enabled", productName)
-
+ 
 	result, err = cli.Run(serviceMock, "enable", productId, "", 0.0)
 	require.Nil(t, err)
 	require.Equal(t, expectedResult, result)
