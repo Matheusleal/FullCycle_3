@@ -1,5 +1,6 @@
 import Address from "../../../domain/customer/entity/value-object/address";
 import CustomerFactory from "../../../domain/customer/factory/customer.factory";
+import ListCustomerUseCase from "./list.customer.usecase";
 
 const customer1 = CustomerFactory.createWithAddress("Customer 1", new Address("Street 1", 1, "Zipcode 1", "City 1"));
 const customer2 = CustomerFactory.createWithAddress("Customer 2", new Address("Street 2", 2, "Zipcode 2", "City 2"));
@@ -19,11 +20,10 @@ describe('Unit test list customer use case', () => {
     const customerRepository = MockRepository()
     const useCase = new ListCustomerUseCase(customerRepository)
 
-    const output = await useCase.execute()
+    const output = await useCase.execute({})
 
     expect(output.customers.length).toBe(2)
 
-    expect(output.customers[0]).toEqual(customer1)
     expect(output.customers[0].id).toEqual(customer1.id)
     expect(output.customers[0].name).toEqual(customer1.name)
     expect(output.customers[0].address.street).toEqual(customer1.address.street)
@@ -31,7 +31,6 @@ describe('Unit test list customer use case', () => {
     expect(output.customers[0].address.zip).toEqual(customer1.address.zipCode)
     expect(output.customers[0].address.city).toEqual(customer1.address.city)
 
-    expect(output.customers[1]).toEqual(customer2)
     expect(output.customers[1].id).toEqual(customer2.id)
     expect(output.customers[1].name).toEqual(customer2.name)
     expect(output.customers[1].address.street).toEqual(customer2.address.street)

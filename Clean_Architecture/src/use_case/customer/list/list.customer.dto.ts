@@ -4,7 +4,7 @@ export interface OutputListCustomerDto {
   customers: CustomerDto[]
 }
 
-type CustomerDto = {
+export type CustomerDto = {
   id: string
   name: string
   address: {

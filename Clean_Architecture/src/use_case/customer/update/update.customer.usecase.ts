@@ -12,8 +12,6 @@ export default class UpdateCustomerUseCase {
   async execute(input: InputUpdateCustomerDto): Promise<OutputUpdateCustomerDto> {
     const customer = await this._customerRepository.find(input.id)
 
-    console.log("customer: ", customer)
-
     if (!customer) {
       throw new Error("Customer not found")
     }
