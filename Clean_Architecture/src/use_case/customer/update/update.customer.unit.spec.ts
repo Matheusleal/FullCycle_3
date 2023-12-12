@@ -38,4 +38,103 @@ describe('Unit Test Update Customer Use Case', () => {
     expect(output).toEqual(input)
   })
 
+  it('should throw an error when name is missing', async () => {
+    const customerRepository = MockRepository()
+    const useCase = new UpdateCustomerUseCase(customerRepository)
+
+    const customer = MockCustomerModel
+
+    const input = {
+      id: customer.id,
+      name: "",
+      address: {
+        street: "Street 10",
+        city: "City 10",
+        number: 10,
+        zip: "Zipcode 10",
+      }
+    }
+
+    await expect(useCase.execute(input)).rejects.toThrowError("Name is required")
+  })
+
+  it('should throw an error when street is missing', async () => {
+    const customerRepository = MockRepository()
+    const useCase = new UpdateCustomerUseCase(customerRepository)
+
+    const customer = MockCustomerModel
+
+    const input = {
+      id: customer.id,
+      name: "John Doe Updated",
+      address: {
+        street: "",
+        city: "City 10",
+        number: 10,
+        zip: "Zipcode 10",
+      }
+    }
+
+    await expect(useCase.execute(input)).rejects.toThrowError("Street is required")
+  })
+
+  it('should throw an error when number is missing', async () => {
+    const customerRepository = MockRepository()
+    const useCase = new UpdateCustomerUseCase(customerRepository)
+
+    const customer = MockCustomerModel
+
+    const input = {
+      id: customer.id,
+      name: "John Doe Updated",
+      address: {
+        street: "Street 10",
+        city: "City 10",
+        number: 0,
+        zip: "Zipcode 10",
+      }
+    }
+
+    await expect(useCase.execute(input)).rejects.toThrowError("Number is required")
+  })
+
+  it('should throw an error when zip is missing', async () => {
+    const customerRepository = MockRepository()
+    const useCase = new UpdateCustomerUseCase(customerRepository)
+
+    const customer = MockCustomerModel
+
+    const input = {
+      id: customer.id,
+      name: "John Doe Updated",
+      address: {
+        street: "Street 10",
+        city: "City 10",
+        number: 10,
+        zip: "",
+      }
+    }
+
+    await expect(useCase.execute(input)).rejects.toThrowError("Zip is required")
+  })
+
+  it('should throw an error when city is missing', async () => {
+    const customerRepository = MockRepository()
+    const useCase = new UpdateCustomerUseCase(customerRepository)
+
+    const customer = MockCustomerModel
+
+    const input = {
+      id: customer.id,
+      name: "John Doe Updated",
+      address: {
+        street: "Street 10",
+        city: "",
+        number: 10,
+        zip: "Zipcode 10",
+      }
+    }
+
+    await expect(useCase.execute(input)).rejects.toThrowError("City is required")
+  })
 })
