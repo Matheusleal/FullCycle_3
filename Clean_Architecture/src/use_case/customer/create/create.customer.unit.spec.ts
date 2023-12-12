@@ -1,5 +1,6 @@
 import Customer from "../../../domain/customer/entity/customer"
 import Address from "../../../domain/customer/entity/value-object/address"
+import CreateCustomerUseCase from "./create.customer.usecase"
 
 const MockCustomerModel = () => {
   const customer = {
