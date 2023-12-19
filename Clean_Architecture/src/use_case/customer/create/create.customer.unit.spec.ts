@@ -33,12 +33,12 @@ describe('Unit Test create Customer Use Case', () => {
     const input = MockCustomerModel()
     const output = await useCase.execute(input)
 
-    const ExpectedOutput = {
+    const expectedOutput = {
       id: expect.any(String),
       ...input,
     }
 
-    expect(output).toEqual(ExpectedOutput)
+    expect(output).toEqual(expectedOutput)
   })
 
   it('should throw an error when customer name is missing', async () => {
