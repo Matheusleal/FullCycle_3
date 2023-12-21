@@ -55,7 +55,7 @@ describe('Unit Test Update Customer Use Case', () => {
       }
     }
 
-    await expect(useCase.execute(input)).rejects.toThrowError("Name is required")
+    await expect(useCase.execute(input)).rejects.toThrow("Name is required")
   })
 
   it('should throw an error when street is missing', async () => {
@@ -75,7 +75,7 @@ describe('Unit Test Update Customer Use Case', () => {
       }
     }
 
-    await expect(useCase.execute(input)).rejects.toThrowError("Street is required")
+    await expect(useCase.execute(input)).rejects.toThrow("Street is required")
   })
 
   it('should throw an error when number is missing', async () => {
