@@ -5,6 +5,7 @@
 import Address from "./value-object/address";
 
 import AgregateRoot from "../../@shared/domain/aggregate_root.interface"
+import Entity from "../../@shared/entity/entity.abstract";
 import CustomerAddressChangedEvent from "../event/customer_address_changed.event";
 
 /*
@@ -19,8 +20,7 @@ import CustomerAddressChangedEvent from "../event/customer_address_changed.event
   - - - Customer.ts (get,set)
  */
 
-export default class Customer extends AgregateRoot {
-  private _id: string;
+export default class Customer extends Entity {
   private _name: string;
   private _address!: Address;
   private _active: boolean = false;
@@ -29,20 +29,32 @@ export default class Customer extends AgregateRoot {
   constructor(id: string, name: string) {
     super();
 
-    this._id = id;
+    this.id = id;
     this._name = name;
 
     this.validateEntity();
+
+    if(this.notification.hasErrors()) {
+      throw new Error(this.notification.messages())
+    }
   }
 
-  get id() {return this._id;}
-  get name() {return this._name;}
-  get address() {return this._address;}
-  get rewardPoints() {return this._rewardPoints;}
+  get name() { return this._name; }
+  get address() { return this._address; }
+  get rewardPoints() { return this._rewardPoints; }
 
   validateEntity() {
-    if (this._id.length === 0) throw new Error("Id is required");
-    if (this._name.length === 0) throw new Error("Name is required");
+    if (this.id.length === 0)
+      this.notification.addError({
+        context: "customer",
+        message: "Id is required"
+      });
+
+    if (this._name.length === 0)
+      this.notification.addError({
+        context: "customer",
+        message: "Name is required"
+      });
   }
 
   setAddress(address: Address) {
@@ -55,7 +67,10 @@ export default class Customer extends AgregateRoot {
   }
 
   activate() {
-    if (this._address === undefined) throw new Error("Address is required");
+    if (this._address === undefined) this.notification.addError({
+      context: "customer",
+      message: "Address is required"
+    });
 
     this._address?.validate();
     this._active = true;

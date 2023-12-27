@@ -17,4 +17,8 @@ export default class Notification {
       .map(error => `${error.context}: ${error.message}`)
       .join(", ")
   }
+
+  hasErrors(): boolean {
+    return this.errors.length > 0
+  }
 }
