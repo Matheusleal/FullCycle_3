@@ -1,10 +1,10 @@
-import {app, sequelize} from "../express"
+import { app, sequelize } from "../express"
 import request from "supertest"
 
 describe("E2E test for customer", () => {
 
   beforeEach(async () => {
-    await sequelize.sync({force: true})
+    await sequelize.sync({ force: true })
   })
 
   afterAll(async () => {
@@ -40,5 +40,49 @@ describe("E2E test for customer", () => {
       })
 
     expect(response.status).toBe(500)
+  })
+
+  it("should list all customers", async () => {
+
+    const response1 = await request(app)
+      .post("/customer")
+      .send({
+        name: "John",
+        address: {
+          street: "Street 1",
+          number: 123,
+          zip: "12345",
+          city: "City"
+        }
+      })
+
+    expect(response1.status).toBe(200)
+
+    const response2 = await request(app)
+      .post("/customer")
+      .send({
+        name: "Jane",
+        address: {
+          street: "Street 2",
+          number: 1233,
+          zip: "123435",
+          city: "City2"
+        }
+      })
+
+    expect(response2.status).toBe(200)
+
+    const responseList = await request(app)
+      .get("/customer")
+      .send()
+
+    expect(responseList.status).toBe(200)
+    expect(responseList.body.customers.length).toBe(2)
+
+    expect(responseList.body.customers[0].name).toBe("John")
+    expect(responseList.body.customers[0].address.street).toBe("Street 1")
+
+    expect(responseList.body.customers[1].name).toBe("Jane")
+    expect(responseList.body.customers[1].address.street).toBe("Street 2")
   })
 })
