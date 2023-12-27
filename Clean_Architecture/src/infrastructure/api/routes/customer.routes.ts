@@ -24,8 +24,8 @@ customerRoutes.post("/", async (req: Request, res: Response) => {
 
     res.send(output)
 
-  } catch ( er) {
+  } catch (err) {
 
-    res.status(500).send({error: er})
+    res.status(500).send({error: err})
   }
 })
