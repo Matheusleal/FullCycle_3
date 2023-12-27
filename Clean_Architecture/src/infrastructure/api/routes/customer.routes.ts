@@ -2,6 +2,8 @@ import express, {Request, Response} from "express"
 
 import CustomerRepository from "../../customer/repository/customer.repository"
 import CreateCustomerUseCase from "../../../use_case/customer/create/create.customer.usecase"
+import ListCustomerUseCase from "../../../use_case/customer/list/list.customer.usecase"
+
 import { InputCreateCustomerDto } from "../../../use_case/customer/create/create.customer.dto"
 
 export const customerRoutes = express.Router()
@@ -24,8 +26,23 @@ customerRoutes.post("/", async (req: Request, res: Response) => {
 
     res.send(output)
 
-  } catch (err) {
+  } catch (error) {
 
-    res.status(500).send({error: err})
+    res.status(500).send({error: error})
+  }
+})
+
+customerRoutes.get("/", async (req: Request, res: Response) => {
+  const useCase = new ListCustomerUseCase(new CustomerRepository())
+
+  try {
+
+    const output = await useCase.execute({})
+
+    res.send(output)
+
+  } catch (error) {
+
+    res.status(500).send({error: error})
   }
 })
