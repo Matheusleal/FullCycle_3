@@ -1,6 +1,7 @@
 import express, {Request, Response} from "express"
 
 import CustomerRepository from "../../customer/repository/customer.repository"
+
 import CreateCustomerUseCase from "../../../use_case/customer/create/create.customer.usecase"
 import ListCustomerUseCase from "../../../use_case/customer/list/list.customer.usecase"
 
