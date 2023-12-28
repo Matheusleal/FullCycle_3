@@ -8,6 +8,8 @@ import AgregateRoot from "../../@shared/domain/aggregate_root.interface"
 import Entity from "../../@shared/entity/entity.abstract";
 import CustomerAddressChangedEvent from "../event/customer_address_changed.event";
 
+import NotificationError from "../../@shared/notification/notification.error";
+
 /*
     Complexidade de negócio:
   - Domain
@@ -35,7 +37,7 @@ export default class Customer extends Entity {
     this.validateEntity();
 
     if(this.notification.hasErrors()) {
-      throw new Error(this.notification.messages())
+      throw new NotificationError(this.notification.getErrors())
     }
   }
 
