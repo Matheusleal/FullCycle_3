@@ -1,20 +1,24 @@
-import Notification from "../notification/notification";
+import Notification, { NotificationErrorProps } from "../notification/notification";
 import AggregateRootInterface from "../domain/aggregate_root.interface";
 
 export default abstract class Entity extends AggregateRootInterface {
   private _id: string;
-  protected notification: Notification;
+  protected notification: Notification = new Notification();
 
   constructor() {
     super();
-    this.notification = new Notification();
   }
 
-  get id() {
-    return this._id
+  get id() { return this._id }
+  get isValid() { return !this.notification.hasErrors() }
+
+  protected set id(id: string) { this._id = id }
+
+  getMessages(): string {
+    return this.notification.messages()
   }
 
-  protected set id(id: string) {
-    this._id = id
+  getErrors(): NotificationErrorProps[] {
+    return this.notification.getErrors()
   }
 }

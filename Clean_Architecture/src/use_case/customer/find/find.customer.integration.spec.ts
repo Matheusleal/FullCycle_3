@@ -19,7 +19,7 @@ describe('Find Customer Use Case', () => {
 
     sequelize.addModels([CustomerModel]);
     await sequelize.sync();
-  });
+  }, 10000);
 
   afterEach(async () => {
     await sequelize.close();

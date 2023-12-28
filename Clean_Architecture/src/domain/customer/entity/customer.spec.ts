@@ -3,16 +3,20 @@ import Customer from "./customer";
 
 describe("Customer unit tests", () => {
 
-  it("should throw error when id is empty", () => {
-    expect(() => {
-      const customer = new Customer("", "John");
-    }).toThrow("Id is required");
+  it("should notify when id is empty", () => {
+    const customer = new Customer("", "John");
+
+    console.log(customer.getMessages());
+
+    expect(customer.isValid).toBeFalsy();
+    expect(customer.getMessages()).toEqual("customer: Id is required");
   })
 
-  it("should throw error when name is empty", () => {
-    expect(() => {
-      const customer = new Customer("1", "");
-    }).toThrow("Name is required");
+  it("should notify when name is empty", () => {
+    const customer = new Customer("1", "");
+
+    expect(customer.isValid).toBeFalsy()
+    expect(customer.getMessages()).toEqual("customer: Name is required");
   })
 
   it("should change name", () => {
@@ -22,12 +26,12 @@ describe("Customer unit tests", () => {
     expect(customer.name).toBe("Jane");
   })
 
-  it("should throw error when change name with an empty name", () => {
-    expect(() => {
-      const customer = new Customer("1", "John");
-      customer.changeName("");
+  it("should notify when change name with an empty name", () => {
+    const customer = new Customer("1", "John");
+    customer.changeName("");
 
-    }).toThrow("Name is required");
+    expect(customer.isValid).toBeFalsy();
+    expect(customer.getMessages()).toEqual("customer: Name is required");
   })
 
   it("should activate customer", () => {
@@ -38,12 +42,12 @@ describe("Customer unit tests", () => {
     expect(customer.isActive()).toBe(true);
   })
 
-  it("should throw error when activate customer without address", () => {
+  it("should notify when activate customer without address", () => {
+    const customer = new Customer("1", "John");
+    customer.activate();
 
-    expect(() => {
-      const customer = new Customer("1", "John");
-      customer.activate();
-    }).toThrow("Address is required");
+    expect(customer.isValid).toBeFalsy()
+    expect(customer.getMessages()).toEqual("customer: Address is required");
 
   })
 

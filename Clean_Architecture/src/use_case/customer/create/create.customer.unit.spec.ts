@@ -48,7 +48,7 @@ describe('Unit Test create Customer Use Case', () => {
     const input = MockCustomerModel()
     input.name = ""
 
-    await expect(useCase.execute(input)).rejects.toThrow("Name is required")
+    await expect(useCase.execute(input)).rejects.toThrow("customer: Name is required")
   })
 
   it('should throw an error when customer address street is missing', async () => {

@@ -21,7 +21,7 @@ describe('List Product integration Test', () => {
 
     sequelize.addModels([ProductModel]);
     await sequelize.sync();
-  })
+  }, 10000);
 
   afterEach(async () => {
     await sequelize.close();

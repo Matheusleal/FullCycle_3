@@ -55,7 +55,7 @@ describe('Unit Test Update Customer Use Case', () => {
       }
     }
 
-    await expect(useCase.execute(input)).rejects.toThrow("Name is required")
+    await expect(useCase.execute(input)).rejects.toThrow("customer: Name is required")
   })
 
   it('should throw an error when street is missing', async () => {
@@ -95,7 +95,7 @@ describe('Unit Test Update Customer Use Case', () => {
       }
     }
 
-    await expect(useCase.execute(input)).rejects.toThrowError("Number is required")
+    await expect(useCase.execute(input)).rejects.toThrow("Number is required")
   })
 
   it('should throw an error when zip is missing', async () => {
@@ -115,7 +115,7 @@ describe('Unit Test Update Customer Use Case', () => {
       }
     }
 
-    await expect(useCase.execute(input)).rejects.toThrowError("Zip is required")
+    await expect(useCase.execute(input)).rejects.toThrow("Zip is required")
   })
 
   it('should throw an error when city is missing', async () => {
@@ -135,6 +135,6 @@ describe('Unit Test Update Customer Use Case', () => {
       }
     }
 
-    await expect(useCase.execute(input)).rejects.toThrowError("City is required")
+    await expect(useCase.execute(input)).rejects.toThrow("City is required")
   })
 })

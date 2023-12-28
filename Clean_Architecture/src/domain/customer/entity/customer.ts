@@ -35,10 +35,6 @@ export default class Customer extends Entity {
     this._name = name;
 
     this.validateEntity();
-
-    if(this.notification.hasErrors()) {
-      throw new NotificationError(this.notification.getErrors())
-    }
   }
 
   get name() { return this._name; }
@@ -46,6 +42,7 @@ export default class Customer extends Entity {
   get rewardPoints() { return this._rewardPoints; }
 
   validateEntity() {
+
     if (this.id.length === 0)
       this.notification.addError({
         context: "customer",
@@ -69,10 +66,15 @@ export default class Customer extends Entity {
   }
 
   activate() {
-    if (this._address === undefined) this.notification.addError({
-      context: "customer",
-      message: "Address is required"
-    });
+    if (this._address === undefined) {
+
+      this.notification.addError({
+        context: "customer",
+        message: "Address is required"
+      })
+
+      return
+    }
 
     this._address?.validate();
     this._active = true;

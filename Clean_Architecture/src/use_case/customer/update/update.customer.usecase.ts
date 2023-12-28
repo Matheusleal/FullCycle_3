@@ -1,3 +1,4 @@
+import NotificationError from "../../../domain/@shared/notification/notification.error"
 import Address from "../../../domain/customer/entity/value-object/address"
 import CustomerRepositoryInterface from "../../../domain/customer/repository/customer.repository.interface"
 import { InputUpdateCustomerDto, OutputUpdateCustomerDto } from "./update.customer.dto"
@@ -19,6 +20,10 @@ export default class UpdateCustomerUseCase {
     const newAddress = new Address(input.address.street, input.address.number, input.address.zip, input.address.city)
     customer.changeName(input.name)
     customer.setAddress(newAddress)
+
+    if (!customer.isValid) {
+      throw new NotificationError(customer.getErrors())
+    }
 
     await this._customerRepository.update(customer)
 

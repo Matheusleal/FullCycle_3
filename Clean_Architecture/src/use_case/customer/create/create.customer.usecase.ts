@@ -3,6 +3,7 @@ import Address from "../../../domain/customer/entity/value-object/address";
 import CustomerRepositoryInterface from "../../../domain/customer/repository/customer.repository.interface";
 import { InputCreateCustomerDto, OutputCreateCustomerDto } from "./create.customer.dto";
 import CustomerFactory from "../../../domain/customer/factory/customer.factory";
+import NotificationError from "../../../domain/@shared/notification/notification.error";
 
 export default class CreateCustomerUseCase {
   private _customerRepository: CustomerRepositoryInterface
@@ -15,6 +16,10 @@ export default class CreateCustomerUseCase {
 
     const address = new Address(input.address.street, input.address.number, input.address.zip, input.address.city)
     const customer = CustomerFactory.createWithAddress(input.name, address)
+
+    if (!customer.isValid) {
+      throw new NotificationError(customer.getErrors())
+    }
 
     await this._customerRepository.create(customer)
 
