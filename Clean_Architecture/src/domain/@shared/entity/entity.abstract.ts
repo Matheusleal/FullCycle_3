@@ -3,22 +3,23 @@ import AggregateRootInterface from "../domain/aggregate_root.interface";
 
 export default abstract class Entity extends AggregateRootInterface {
   private _id: string;
-  protected notification: Notification = new Notification();
+  private _notification: Notification = new Notification();
 
   constructor() {
     super();
   }
 
   get id() { return this._id }
-  get isValid() { return !this.notification.hasErrors() }
+  get isValid() { return !this._notification.hasErrors() }
+  get notification() { return this._notification }
 
   protected set id(id: string) { this._id = id }
 
   getMessages(): string {
-    return this.notification.messages()
+    return this._notification.messages()
   }
 
   getErrors(): NotificationErrorProps[] {
-    return this.notification.getErrors()
+    return this._notification.getErrors()
   }
 }
