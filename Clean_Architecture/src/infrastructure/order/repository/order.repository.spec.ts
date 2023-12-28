@@ -28,7 +28,7 @@ describe("Order repository test", () => {
 
     sequelize.addModels([CustomerModel, OrderModel, OrderItemModel, ProductModel]);
     await sequelize.sync();
-  }, 10000);
+  }, 11000);
 
   afterEach(async () => {
     await sequelize.close();

@@ -1,3 +1,4 @@
+import NotificationError from "../../../domain/@shared/notification/notification.error"
 import ProductRepositoryInterface from "../../../domain/product/repository/product.repository.interface"
 import { InputUpdateProductDto, OutputUpdateProductDto } from "./update.product.dto"
 
@@ -17,6 +18,10 @@ export default class UpdateProductUseCase {
 
     product.changeName(input.name)
     product.changePrice(input.price)
+
+    if (!product.isValid) {
+      throw new NotificationError(product.getErrors())
+    }
 
     await this._productRepository.update(product)
 

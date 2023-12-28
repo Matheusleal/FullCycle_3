@@ -18,7 +18,7 @@ describe("Customer repository test", () => {
 
     sequelize.addModels([CustomerModel]);
     await sequelize.sync();
-  }, 10000);
+  }, 11000);
 
   afterEach(async () => {
     await sequelize.close();

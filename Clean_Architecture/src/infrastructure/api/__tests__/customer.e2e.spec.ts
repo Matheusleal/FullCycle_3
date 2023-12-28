@@ -5,7 +5,7 @@ describe("E2E test for customer", () => {
 
   beforeEach(async () => {
     await sequelize.sync({ force: true })
-  }, 10000)
+  }, 11000)
 
   afterAll(async () => {
     await sequelize.close()

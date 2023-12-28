@@ -1,3 +1,4 @@
+import NotificationError from "../../../domain/@shared/notification/notification.error"
 import Product from "../../../domain/product/entity/product"
 import ProductFactory from "../../../domain/product/factory/product.factory"
 import ProductRepositoryInterface from "../../../domain/product/repository/product.repository.interface"
@@ -13,6 +14,10 @@ export default class CreateProductUseCase {
   async execute(input: InputCreateProductDto): Promise<OutputCreateProductDto> {
 
     const product = ProductFactory.create(input.name, input.price)
+
+    if (!product.isValid) {
+      throw new NotificationError(product.getErrors())
+    }
 
     await this._productRepository.create(product)
 
