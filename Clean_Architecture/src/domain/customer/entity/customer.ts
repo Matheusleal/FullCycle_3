@@ -2,12 +2,10 @@
 // as propriedades do objeto devem ser consistentes, um customr nunca pode ser sem nome.
 // uma entidade por padrão sempre precisa se autovalidar
 
-import Address from "./value-object/address"
-
-import AgregateRoot from "../../@shared/domain/aggregate_root.interface"
 import Entity from "../../@shared/entity/entity.abstract"
+import Address from "./value-object/address"
 import CustomerAddressChangedEvent from "../event/customer_address_changed.event"
-import CustomerValidatorFactory from "../factory/customer.validator.factory"
+import {CustomerValidatorFactory, CustomerActivateValidatorFactory} from "../factory/customer.validator.factory"
 
 /*
     Complexidade de negócio:
@@ -56,18 +54,14 @@ export default class Customer extends Entity {
   }
 
   activate() {
-    if (this._address === undefined) {
+    CustomerActivateValidatorFactory
+    .create()
+    .validate(this)
 
-      this.notification.addError({
-        context: "customer",
-        message: "Address is required"
-      })
-
-      return
+    if(this.isValid) {
+      this._address?.validate()
+      this._active = true
     }
-
-    this._address?.validate()
-    this._active = true
   }
   deactivate() {
     this._active = false

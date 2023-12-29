@@ -21,14 +21,14 @@ describe("Product unit tests", () => {
     const product = new Product("1", "Item", -10)
 
     expect(product.isValid).toBeFalsy()
-    expect(product.getMessages()).toEqual("product: Price cannot be negative")
+    expect(product.getMessages()).toEqual("product: Price must be greater than zero")
   })
 
   it("should notify when name is empty and price is negative", () => {
     const product = new Product("1", "", -10)
 
     expect(product.isValid).toBeFalsy()
-    expect(product.getMessages()).toEqual("product: Name is required, product: Price cannot be negative")
+    expect(product.getMessages()).toEqual("product: Name is required, product: Price must be greater than zero")
   })
 
   it("should change name", () => {
@@ -58,6 +58,6 @@ describe("Product unit tests", () => {
     product.changePrice(-10)
 
     expect(product.isValid).toBeFalsy()
-    expect(product.getMessages()).toEqual("product: Price cannot be negative")
+    expect(product.getMessages()).toEqual("product: Price must be greater than zero")
   })
 })

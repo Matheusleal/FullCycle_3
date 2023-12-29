@@ -1,5 +1,7 @@
 import Entity from "../../@shared/entity/entity.abstract"
 
+import ProductValidatorFactory from "../factory/product.validator.factory"
+
 export default class Product extends Entity {
   private _name: string
   private _price: number
@@ -15,24 +17,9 @@ export default class Product extends Entity {
   }
 
   validate() {
-
-    if (this.id.length === 0)
-      this.notification.addError({
-        context: "product",
-        message: "Id is required"
-      })
-
-    if (this._name.length === 0)
-      this.notification.addError({
-        context: "product",
-        message: "Name is required"
-      })
-
-    if (this._price < 0)
-      this.notification.addError({
-        context: "product",
-        message: "Price cannot be negative"
-      })
+    ProductValidatorFactory
+    .create()
+    .validate(this)
   }
 
   get name() { return this._name }

@@ -50,6 +50,6 @@ describe('Unit Test create Product Use Case', () => {
     const input = MockProductModel()
     input.price = -1
 
-    await expect(useCase.execute(input)).rejects.toThrow("Price cannot be negative")
+    await expect(useCase.execute(input)).rejects.toThrow("Price must be greater than zero")
   })
 })
