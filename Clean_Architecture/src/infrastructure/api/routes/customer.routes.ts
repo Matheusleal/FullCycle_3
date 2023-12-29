@@ -7,6 +7,8 @@ import ListCustomerUseCase from "../../../use_case/customer/list/list.customer.u
 
 import { InputCreateCustomerDto } from "../../../use_case/customer/create/create.customer.dto"
 
+import CustomerPresenter from "../presenter/customer.presenter"
+
 export const customerRoutes = express.Router()
 
 customerRoutes.post("/", async (req: Request, res: Response) => {
@@ -40,7 +42,10 @@ customerRoutes.get("/", async (req: Request, res: Response) => {
 
     const output = await useCase.execute({})
 
-    res.send(output)
+    res.format({
+      json: () => res.send(output),
+      xml: () => res.send(CustomerPresenter.toXML(output))
+    })
 
   } catch (error) {
 
