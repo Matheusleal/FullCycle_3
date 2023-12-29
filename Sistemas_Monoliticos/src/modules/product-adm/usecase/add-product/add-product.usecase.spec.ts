@@ -1,4 +1,5 @@
 import { AddProductInputDto } from "./add-product.dto"
+import AddProductUseCase from "./add-product.usecase"
 
 const MockRepository = () => {
 
@@ -11,10 +12,8 @@ const MockRepository = () => {
 describe('AddProduct Usecase unit test', () => {
 
   it("should add a product", async () => {
-    //repository
     const repository = MockRepository()
-    //usecase
-    const usecase = new AddProductUsecase(repository)
+    const usecase = new AddProductUseCase(repository)
 
     const input: AddProductInputDto = {
       name: "Product 1",
@@ -23,10 +22,17 @@ describe('AddProduct Usecase unit test', () => {
       stock: 10
     }
 
-    usecase.execute(input)
-    //input
+    const output = await usecase.execute(input)
 
-    //output
+    expect(repository.add).toHaveBeenCalled()
+
+    expect(output.id).toBeDefined()
+    expect(output.name).toBe(input.name)
+    expect(output.description).toBe(input.description)
+    expect(output.purchasePrice).toBe(input.purchasePrice)
+    expect(output.stock).toBe(input.stock)
+    expect(output.createdAt).toBeDefined()
+    expect(output.updatedAt).toBeDefined()
   })
 
 })
