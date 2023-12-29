@@ -7,8 +7,7 @@ import Address from "./value-object/address"
 import AgregateRoot from "../../@shared/domain/aggregate_root.interface"
 import Entity from "../../@shared/entity/entity.abstract"
 import CustomerAddressChangedEvent from "../event/customer_address_changed.event"
-
-import NotificationError from "../../@shared/notification/notification.error"
+import CustomerValidatorFactory from "../factory/customer.validator.factory"
 
 /*
     Complexidade de negócio:
@@ -34,26 +33,17 @@ export default class Customer extends Entity {
     this.id = id
     this._name = name
 
-    this.validateEntity()
+    this.validate()
   }
 
   get name() { return this._name }
   get address() { return this._address }
   get rewardPoints() { return this._rewardPoints }
 
-  validateEntity() {
-
-    if (this.id.length === 0)
-      this.notification.addError({
-        context: "customer",
-        message: "Id is required"
-      })
-
-    if (this._name.length === 0)
-      this.notification.addError({
-        context: "customer",
-        message: "Name is required"
-      })
+  validate() {
+    CustomerValidatorFactory
+    .create()
+    .validate(this)
   }
 
   setAddress(address: Address) {
@@ -85,7 +75,7 @@ export default class Customer extends Entity {
 
   changeName(name: string) {
     this._name = name
-    this.validateEntity()
+    this.validate()
   }
 
   addRewardPoints(points: number) {
