@@ -9,7 +9,7 @@ import IUseCase from "../../@shared/usecase/usecase.interface"
 
 export interface ProductAdmFacadeProps {
   addUserUseCase: IUseCase<AddProductFacadeInputDto, AddProductFacadeOutputDto>
-  checkStockUseCase?: IUseCase<CheckStockFacadeInputDto, CheckStockFacadeOutputDto>
+  checkStockUseCase: IUseCase<CheckStockFacadeInputDto, CheckStockFacadeOutputDto>
 }
 
 export default class ProductAdmFacade implements IProductAdmFacade {
@@ -19,7 +19,7 @@ export default class ProductAdmFacade implements IProductAdmFacade {
 
   constructor(usecaseProps : ProductAdmFacadeProps) {
     this._addUserUseCase = usecaseProps.addUserUseCase
-    // this._checkStockUseCase = usecaseProps.checkStockUseCase
+    this._checkStockUseCase = usecaseProps.checkStockUseCase
   }
 
   async addProduct(input: AddProductFacadeInputDto): Promise<AddProductFacadeOutputDto> {

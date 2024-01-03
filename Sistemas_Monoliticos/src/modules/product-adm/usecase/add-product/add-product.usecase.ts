@@ -1,15 +1,15 @@
 import Id from "../../../@shared/domain/value-object/id.value-object";
 import IUseCase from "../../../@shared/usecase/usecase.interface";
 import Product from "../../domain/product.entity";
-import ProductGateway from "../../gateway/product.gateway";
+import IProductGateway from "../../gateway/product.gateway.interface";
 
 import { AddProductInputDto, AddProductOutputDto } from "./add-product.dto";
 
 export default class AddProductUseCase implements IUseCase<AddProductInputDto, AddProductOutputDto> {
 
-  private _gateway: ProductGateway
+  private _gateway: IProductGateway
 
-  constructor(gateway: ProductGateway) {
+  constructor(gateway: IProductGateway) {
     this._gateway = gateway
   }
 

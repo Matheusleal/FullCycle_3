@@ -2,8 +2,8 @@ import IProductAdmFacade from "../facade/product-admin.facade.interface";
 import ProductAdmFacade from "../facade/product-adm.facade";
 import ProductRepository from "../repository/product.repository";
 
-import AddProductUsecase from "../usecase/add-product/add-product.usecase";
-// import CheckStockUsecase from "../usecase/check-stock/check-stock.usecase";
+import AddProductUseCase from "../usecase/add-product/add-product.usecase";
+import CheckStockUseCase from "../usecase/check-stock/check-stock.usecase";
 
 export default class ProductAdmFacadeFactory {
   static create(): IProductAdmFacade {
@@ -11,8 +11,8 @@ export default class ProductAdmFacadeFactory {
     const productRepository = new ProductRepository()
 
     const productAdmFacade = new ProductAdmFacade({
-      addUserUseCase: new AddProductUsecase(productRepository),
-      checkStockUseCase: undefined //new CheckStockUsecase(productRepository)
+      addUserUseCase: new AddProductUseCase(productRepository),
+      checkStockUseCase: new CheckStockUseCase(productRepository)
     })
 
     return productAdmFacade
