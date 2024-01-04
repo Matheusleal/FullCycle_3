@@ -40,8 +40,6 @@ describe('Product Repository test', () => {
 
     const result = await ProductModel.findOne({ where: { id: product.id.value } })
 
-    console.table(result.id)
-
     expect(result.id).toEqual(product.id.value)
     expect(result.name).toEqual(product.name)
     expect(result.description).toEqual(product.description)
