@@ -1,8 +1,8 @@
-import ProductGateway from "../gateway/product.gateway.interface";
-import Product from "../domain/product.entity";
-import Id from "../../@shared/domain/value-object/id.value-object";
+import ProductGateway from "../gateway/product.gateway.interface"
+import Product from "../domain/product.entity"
+import Id from "../../@shared/domain/value-object/id.value-object"
 
-import ProductModel from "./product.model";
+import ProductModel from "./product.model"
 
 export default class ProductRepository implements ProductGateway {
   async find(id: string): Promise<Product> {

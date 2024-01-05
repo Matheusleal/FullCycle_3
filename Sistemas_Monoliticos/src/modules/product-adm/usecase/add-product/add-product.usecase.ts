@@ -1,9 +1,9 @@
-import Id from "../../../@shared/domain/value-object/id.value-object";
-import IUseCase from "../../../@shared/usecase/usecase.interface";
-import Product from "../../domain/product.entity";
-import IProductGateway from "../../gateway/product.gateway.interface";
+import Id from "../../../@shared/domain/value-object/id.value-object"
+import IUseCase from "../../../@shared/usecase/usecase.interface"
+import Product from "../../domain/product.entity"
+import IProductGateway from "../../gateway/product.gateway.interface"
 
-import { AddProductInputDto, AddProductOutputDto } from "./add-product.dto";
+import { AddProductInputDto, AddProductOutputDto } from "./add-product.dto"
 
 export default class AddProductUseCase implements IUseCase<AddProductInputDto, AddProductOutputDto> {
 

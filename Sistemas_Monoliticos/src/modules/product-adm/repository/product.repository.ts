@@ -1,7 +1,7 @@
-import Id from "../../@shared/domain/value-object/id.value-object";
-import Product, { ProductProps } from "../domain/product.entity";
-import IProductGateway from "../gateway/product.gateway.interface";
-import ProductModel from "./product.model";
+import Id from "../../@shared/domain/value-object/id.value-object"
+import Product, { ProductProps } from "../domain/product.entity"
+import IProductGateway from "../gateway/product.gateway.interface"
+import ProductModel from "./product.model"
 
 export default class ProductRepository implements IProductGateway {
 

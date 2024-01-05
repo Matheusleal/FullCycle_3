@@ -1,5 +1,5 @@
-import IUseCase from "../../@shared/usecase/usecase.interface";
-import { FindStoreCatalogFacadeInputDto, FindStoreCatalogFacadeOutputDto, FindAllProductsInputDto, FindAllProductsOutputDto } from "./store-catalog.facade.dto";
+import IUseCase from "../../@shared/usecase/usecase.interface"
+import { FindStoreCatalogFacadeInputDto, FindStoreCatalogFacadeOutputDto, FindAllProductsInputDto, FindAllProductsOutputDto } from "./store-catalog.facade.dto"
 import IStoreCatalogFacade from "./store-catalog.facade.interface"
 
 interface StoreCatalogFacadeProps {

@@ -13,7 +13,7 @@ export default class Id implements IValueObject<string> {
   get value(): string { return this._value }
 
   equals(other: string): boolean {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.')
   }
 
 }

@@ -1,7 +1,7 @@
-import Id from "../../../@shared/domain/value-object/id.value-object";
-import Product from "../../domain/product.entity";
-import CheckStockUseCase from "./check-stock.usecase";
-import { CheckStockInputDto } from "./check.stock.dto";
+import Id from "../../../@shared/domain/value-object/id.value-object"
+import Product from "../../domain/product.entity"
+import CheckStockUseCase from "./check-stock.usecase"
+import { CheckStockInputDto } from "./check.stock.dto"
 
 const product = new Product({
   id: new Id("1"),

@@ -1,6 +1,6 @@
-import IUseCase from "../../../@shared/usecase/usecase.interface";
-import { FindProductInputDto, FindProductOutputDto } from "./find-product.dto";
-import IProductRepository from "../../repository/product.repository";
+import IUseCase from "../../../@shared/usecase/usecase.interface"
+import { FindProductInputDto, FindProductOutputDto } from "./find-product.dto"
+import IProductRepository from "../../repository/product.repository"
 export default class FindProductUsecase implements IUseCase<FindProductInputDto, FindProductOutputDto> {
 
   private _repository: IProductRepository

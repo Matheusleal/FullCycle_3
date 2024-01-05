@@ -1,8 +1,8 @@
-import Id from "../../../@shared/domain/value-object/id.value-object";
-import IUseCase from "../../../@shared/usecase/usecase.interface";
+import Id from "../../../@shared/domain/value-object/id.value-object"
+import IUseCase from "../../../@shared/usecase/usecase.interface"
 
-import IProductGateway from "../../gateway/product.gateway.interface";
-import { CheckStockInputDto, CheckStockOutputDto } from "./check.stock.dto";
+import IProductGateway from "../../gateway/product.gateway.interface"
+import { CheckStockInputDto, CheckStockOutputDto } from "./check.stock.dto"
 
 export default class CheckStockUseCase implements IUseCase<CheckStockInputDto, CheckStockOutputDto> {
   private _gateway: IProductGateway

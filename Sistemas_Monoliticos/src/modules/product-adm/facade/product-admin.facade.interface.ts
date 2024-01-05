@@ -3,7 +3,7 @@ import {
   AddProductFacadeOutputDto,
   CheckStockFacadeInputDto,
   CheckStockFacadeOutputDto
-} from "./product-admin.facade.dto";
+} from "./product-admin.facade.dto"
 
 export default interface IProductAdmFacade {
   addProduct(input: AddProductFacadeInputDto): Promise<AddProductFacadeOutputDto>
