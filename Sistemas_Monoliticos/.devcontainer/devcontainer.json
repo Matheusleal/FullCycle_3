@@ -1,0 +1,20 @@
+{
+  "image": "node:19",
+  "name": "devcontainer Sistemas Monolíticos",
+  "workspaceFolder": "/app/src",
+  "service": "devcontainer-sistemas-monoliticos",
+  "dockerComposeFile": "../docker-compose.yml",
+  "shutdownAction": "stopContainer",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-language-features",
+        "firsttris.vscode-jest-runner",
+        "Codeium.codeium"
+      ],
+      "settings": {
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  }
+}

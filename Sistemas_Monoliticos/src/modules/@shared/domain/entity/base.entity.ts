@@ -15,5 +15,6 @@ export default abstract class BaseEntity {
   get createdAt(): Date { return this._createdAt }
   get updatedAt(): Date { return this._updatedAt }
 
-  set updatedAt(updatedAt: Date) { this._updatedAt = updatedAt }
+  private set createdAt(createdAt: Date) { this._createdAt = createdAt }
+  private set updatedAt(updatedAt: Date) { this._updatedAt = updatedAt }
 }

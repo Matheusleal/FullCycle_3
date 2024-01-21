@@ -16,7 +16,7 @@ export default class ProductAdmFacade implements IProductAdmFacade {
 
   private _addUserUseCase: IUseCase<AddProductFacadeInputDto, AddProductFacadeOutputDto>
   private _checkStockUseCase: IUseCase<CheckStockFacadeInputDto, CheckStockFacadeOutputDto>
-
+ 
   constructor(usecaseProps : ProductAdmFacadeProps) {
     this._addUserUseCase = usecaseProps.addUserUseCase
     this._checkStockUseCase = usecaseProps.checkStockUseCase
