@@ -1,7 +1,7 @@
-import IUseCase from "../../../@shared/usecase/usecase.interface.ts"
-import Transaction from "../../domain/transaction.entity.ts"
-import ITransactionGateway from "../../gateway/transaction.gateway.ts"
-import { ProcessPaymentInputDto, ProcessPaymentOutputDto } from "./process-payment.dto.ts"
+import IUseCase from "../../../@shared/usecase/usecase.interface"
+import Transaction from "../../domain/transaction.entity"
+import ITransactionGateway from "../../gateway/transaction.gateway"
+import { ProcessPaymentInputDto, ProcessPaymentOutputDto } from "./process-payment.dto"
 
 export default class ProcessPaymentUsecase implements IUseCase<ProcessPaymentInputDto, ProcessPaymentOutputDto> {
 
@@ -26,7 +26,7 @@ export default class ProcessPaymentUsecase implements IUseCase<ProcessPaymentInp
       transactionId: output.id.value,
       orderId: output.orderId,
       amount: output.amount,
-      status: transaction.status,
+      status: transaction.status.value,
       createdAt: output.createdAt,
       updatedAt: output.updatedAt
     }
